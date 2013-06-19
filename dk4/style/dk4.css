@@ -1,0 +1,98 @@
+@charset "utf-8";
+/* CSS Document */
+
+.content table {
+    border: 1px dotted dimgrey
+}
+
+.clsSubject {
+    font-family: Verdana, Helvetica, Arial;
+    font-size: 12pt;
+    font-decoration: none;
+    font-weight: bold;
+    color: #00000;
+    background-color: #2E8B57;
+    width: 100%;
+    border: 0px;
+    border-style: solid;
+    border-color: #2E8B57;
+}
+
+.clsBody {
+    font-family: Verdana, Helvetica, Arial;
+    font-size: 8pt;
+    background-color: white;
+    color: black;
+    margin: 10px 2px;
+}
+
+.clsTable {
+    font-family: Verdana, Helvetica, Arial;
+    font-size: 10pt;
+    background-color: #D4D4D4;
+    padding: 10px 10px 0;
+}
+
+P {
+    font-size: 10pt;
+    margin-top: 3px;
+    margin-bottom: 7px;
+}
+
+.fontcolor {
+    color: #873324;
+    font-size: 12px;
+    background-color: #C1CDC1;
+}
+
+.fontcolor2 {
+    color: #6B8E23;
+    font-size: 12px;
+    background-color: #C1CDC1;
+}
+
+.fontcolor3 {
+    font-size: 12px;
+    background-color: #C1CDC1;
+}
+
+.trcode {
+    font-size: 12px;
+    background-color: #C1CDC1;
+}
+
+.td2 {
+    font-size: 12px;
+    width: 300px;
+}
+
+.td3 {
+    font-size: 12px;
+    width: 700;
+    border-width: 1;
+    border-size: solid;
+}
+
+.tdcode1 {
+    width: 60px;
+}
+
+.tdcode2 {
+    width: 50px;
+}
+
+.tdcode3 {
+    width: 55px;
+}
+
+.tdcode4 {
+    width: 185px;
+}
+
+.blankcolor {
+    color: #096;
+}
+
+.blankcolor {
+    color: #063;
+}

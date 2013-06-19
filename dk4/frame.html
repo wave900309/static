@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>主角</title>
+<link href="style/jquery.mCustomScrollbar.css" type="text/css" rel="stylesheet" />
+<style type="text/css">
+    body{
+        font-size: 14px;
+        background-image: url(img/bgb.png);
+        font-family: monospace, 'Courier New', sans-serif;
+    }
+    .frame_box {
+        position: absolute;
+        width: 900px;
+        left: 20px;
+        top: 20px;
+        bottom: 20px;
+        border-radius: 2px;
+        box-shadow: -1px -1px 1px #666 inset;
+    }
+
+    #content {
+        width: 100%;
+        height: 100%;
+    }
+
+    .navi {
+        position: fixed;
+        top: 40px;
+        left: 930px;
+    }
+
+    .navi a {
+        color: black;
+        text-decoration: none;
+    }
+
+    .navi a:visited {
+        color: black;
+    }
+
+    .navi_sub {
+        margin-bottom: 3px;;
+        width: 70px;
+        height: 20px;
+        font-size: 16px;
+        text-align: left;
+        text-shadow: 2px 2px 2px #999;
+        background-image: url(img/bg.jpg);
+        padding: 4px;
+        cursor: pointer;
+        border-radius: 4px;
+        box-shadow: -1px -1px 1px #666 inset;
+    }
+</style>
+</head>
+<body>
+<div class="frame_box">
+    <iframe id="content" class="cont1" name="content" src="huamei.html" frameborder="0"></iframe>
+</div>
+<div class="navi">
+    <a href="diya.html" target="content"><div class="navi_sub">蒂雅</div></a>
+    <a href="hedelamu.html" target="content"><div class="navi_sub">赫德拉姆</div></a>
+    <a href="huamei.html" target="content"><div class="navi_sub">华梅</div></a>
+    <a href="lafeier.html" target="content"><div class="navi_sub">拉斐尔</div></a>
+    <a href="lilu.html" target="content"><div class="navi_sub">丽璐</div></a>
+    <a href="wuding.html" target="content"><div class="navi_sub">伍丁</div></a>
+    <a href="zuobo.html" target="content"><div class="navi_sub">佐伯</div></a>
+</div>
+
+<script type="text/javascript" src="script/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="script/jquery.mCustomScrollbar.concat.min.js"></script>
+<script type="text/javascript">
+    (function($){
+        $(window).load(function(){
+            $(".cont1").mCustomScrollbar();
+        });
+    })(jQuery);
+</script>
+</body>
+</html>
