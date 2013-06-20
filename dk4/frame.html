@@ -12,8 +12,6 @@
     }
 
     #frame {
-        width: 830px;
-        height: 600px;
         margin-left: 30px;
         margin-top: 20px;
         padding-left: 10px;
@@ -23,7 +21,7 @@
     .navi {
         position: fixed;
         top: 40px;
-        left: 900px;
+        left: 890px;
     }
 
     .navi a {
@@ -36,7 +34,9 @@
     }
 
     .navi_sub {
-        margin-bottom: 3px;;
+        position: relative;
+        margin-bottom: 3px;
+        left: 0;
         width: 70px;
         height: 20px;
         font-size: 16px;
@@ -73,18 +73,17 @@
             $.get(name + '.html', function (data) {
                 $('#frame').html(data);
             });
-        })
-    });
-</script>
-<script type="text/javascript">
-    (function ($) {
-        $(window).load(function () {
-            $("#frame").mCustomScrollbar({
-                autoHideScrollbar: true,
-                theme: "light-thin"
-            });
+            $("html, body").animate({scrollTop: 0}, 200);
+            $(".navi_sub").animate({'left': '0'}, 250);
+            $("#" + name).animate({'left': '-=15'}, 250);
         });
-    })(jQuery);
+        $(window).load(function () {
+            $.get('diya.html', function (data) {
+                $('#frame').html(data);
+            });
+            $("#diya").animate({'left': '-=15'}, 250);
+        });
+    });
 </script>
 </body>
 </html>
