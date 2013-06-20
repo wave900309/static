@@ -3,32 +3,27 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <title>主角</title>
-<link href="style/jquery.mCustomScrollbar.css" type="text/css" rel="stylesheet" />
+<link href="jquery.mCustomScrollbar.css" type="text/css" rel="stylesheet"/>
 <style type="text/css">
-    body{
+    body {
         font-size: 14px;
         background-image: url(img/bgb.png);
         font-family: monospace, 'Courier New', sans-serif;
     }
-    .frame_box {
-        position: absolute;
-        width: 900px;
-        left: 20px;
-        top: 20px;
-        bottom: 20px;
-        border-radius: 2px;
-        box-shadow: -1px -1px 1px #666 inset;
-    }
 
-    #content {
-        width: 100%;
-        height: 100%;
+    #frame {
+        width: 830px;
+        height: 600px;
+        margin-left: 30px;
+        margin-top: 20px;
+        padding-left: 10px;
+        overflow: auto;
     }
 
     .navi {
         position: fixed;
         top: 40px;
-        left: 930px;
+        left: 900px;
     }
 
     .navi a {
@@ -56,27 +51,43 @@
 </style>
 </head>
 <body>
-<div class="frame_box">
-    <iframe id="content" class="cont1" name="content" src="huamei.html" frameborder="0"></iframe>
+<div id="frame">
 </div>
 <div class="navi">
-    <a href="diya.html" target="content"><div class="navi_sub">蒂雅</div></a>
-    <a href="hedelamu.html" target="content"><div class="navi_sub">赫德拉姆</div></a>
-    <a href="huamei.html" target="content"><div class="navi_sub">华梅</div></a>
-    <a href="lafeier.html" target="content"><div class="navi_sub">拉斐尔</div></a>
-    <a href="lilu.html" target="content"><div class="navi_sub">丽璐</div></a>
-    <a href="wuding.html" target="content"><div class="navi_sub">伍丁</div></a>
-    <a href="zuobo.html" target="content"><div class="navi_sub">佐伯</div></a>
+    <div class="navi">
+        <div class="navi_sub" id="diya">蒂雅</div>
+        <div class="navi_sub" id="hedelamu">赫德拉姆</div>
+        <div class="navi_sub" id="huamei">华梅</div>
+        <div class="navi_sub" id="lafeier">拉斐尔</div>
+        <div class="navi_sub" id="lilu">丽璐</div>
+        <div class="navi_sub" id="wuding">伍丁</div>
+        <div class="navi_sub" id="zuobo">佐伯</div>
+    </div>
 </div>
-
 <script type="text/javascript" src="script/jquery-1.9.1.min.js"></script>
-<script type="text/javascript" src="script/jquery.mCustomScrollbar.concat.min.js"></script>
+<script type="text/javascript" src="jquery.mCustomScrollbar.concat.min.js"></script>
 <script type="text/javascript">
-    (function($){
-        $(window).load(function(){
-            $(".cont1").mCustomScrollbar();
+    $(function () {
+        $(".navi_sub").click(function () {
+            var name = $(this).eq(0).attr('id');
+            $.get(name + '.html', function (data) {
+                $('#frame').html(data);
+            });
+        })
+    });
+</script>
+<script type="text/javascript">
+    (function ($) {
+        $(window).load(function () {
+            $("#frame").mCustomScrollbar({
+                autoHideScrollbar: true,
+                theme: "light-thin"
+            });
         });
     })(jQuery);
 </script>
 </body>
 </html>
+
+
+
