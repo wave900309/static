@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <title>主角</title>
-<link href="jquery.mCustomScrollbar.css" type="text/css" rel="stylesheet"/>
+<link href="./style/character.css" type="text/css" rel="stylesheet"/>
 <style type="text/css">
     body {
         font-size: 14px;
@@ -11,9 +11,39 @@
         font-family: monospace, 'Courier New', sans-serif;
     }
 
+    header {
+        background: none repeat scroll 0 0 #F1F1F1;
+        border-bottom: 1px solid #D2D2D2;
+        box-shadow: 0 0 10px #666666;
+        height: 17px;
+        left: 0;
+        opacity: 0.98;
+        overflow: hidden;
+        padding-top: 15px;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1;
+    }
+
+    footer {
+        background: none repeat scroll 0 0 #F1F1F1;
+        border-top: 1px solid #D2D2D2;
+        box-shadow: 0 0 10px #666666;
+        height: 20px;
+        left: 0;
+        opacity: 0.98;
+        overflow: hidden;
+        bottom: 0;
+        position: fixed;
+        width: 100%;
+        z-index: 1;
+    }
+
     #frame {
-        margin-left: 30px;
-        margin-top: 20px;
+        width: 820px;
+        margin-left: 10px;
+        margin-top: 30px;
         padding-left: 10px;
         overflow: auto;
     }
@@ -21,7 +51,7 @@
     .navi {
         position: fixed;
         top: 40px;
-        left: 890px;
+        left: 880px;
     }
 
     .navi a {
@@ -49,8 +79,43 @@
         box-shadow: -1px -1px 1px #666 inset;
     }
 </style>
+<script type="text/javascript" src="script/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="script/jquery.nicescroll.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $(".navi_sub").click(function () {
+            var name = $(this).eq(0).attr('id');
+            $.get(name + '.html', function (data) {
+                $("#frame").html(data);
+            });
+            $("#frame").fadeTo(200, 0);
+            $("#frame").animate({scrollTop: 0}, 400);
+            $("#frame").fadeTo(200, 1.0);
+            $(".navi_sub").animate({'left': '0'}, 200);
+            $("#" + name).animate({'left': '-=15'}, 300);
+        });
+
+        $(window).load(function () {
+            $.get('diya.html', function (data) {
+                $('#frame').html(data);
+            });
+            $('#frame').height(($(window).height()) - 50);
+        });
+
+        $(document).ready(function () {
+            $("html").niceScroll({cursorborderradius: "1px", cursorborder: "1px solid #444", cursorcolor: "#333"});
+            $("#frame").niceScroll({cursorborderradius: "1px", cursorborder: "1px solid #444", cursorcolor: "#333"});
+            $('#frame').height(($(window).height()) - 50);
+        });
+
+        $(window).resize(function () {
+            $('#frame').height(($(window).height()) - 50);
+        });
+    });
+</script>
 </head>
 <body>
+<header></header>
 <div id="frame">
 </div>
 <div class="navi">
@@ -64,27 +129,7 @@
         <div class="navi_sub" id="zuobo">佐伯</div>
     </div>
 </div>
-<script type="text/javascript" src="script/jquery-1.9.1.min.js"></script>
-<script type="text/javascript" src="jquery.mCustomScrollbar.concat.min.js"></script>
-<script type="text/javascript">
-    $(function () {
-        $(".navi_sub").click(function () {
-            var name = $(this).eq(0).attr('id');
-            $.get(name + '.html', function (data) {
-                $('#frame').html(data);
-            });
-            $("html, body").animate({scrollTop: 0}, 200);
-            $(".navi_sub").animate({'left': '0'}, 250);
-            $("#" + name).animate({'left': '-=15'}, 250);
-        });
-        $(window).load(function () {
-            $.get('diya.html', function (data) {
-                $('#frame').html(data);
-            });
-            $("#diya").animate({'left': '-=15'}, 250);
-        });
-    });
-</script>
+<!--<footer></footer>-->
 </body>
 </html>
 
