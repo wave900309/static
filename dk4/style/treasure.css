@@ -4,11 +4,11 @@ body {
     padding-left: 10px;
     font-size: 14px;
     background-image: url(../img/bgb.png);
-    font-family: monospace, 'Courier New', Courier
+    font-family: monospace, 'Courier New', sans-serif;
 }
 
 .region {
-    width: 430px;
+    width: 590px;
     font-size: 16px;
     font-weight: bold;
     text-shadow: 2px 2px 2px #777;
@@ -17,43 +17,48 @@ body {
     margin-top: 10px;
     margin-bottom: 1px;
     background-image: url(../img/bg2.jpg);
-    border-radius: 2px;
+    border-radius: 3px;
     box-shadow: -1px -1px 1px #666 inset;
 }
 
+td{
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
 table {
-    width: 440px;
-    border-radius: 2px;
+    border: 0;
+    border-collapse: collapse;
+    width: 600px;
+    border-radius: 3px;
     box-shadow: -1px -1px 1px #999 inset;
-    background-image: url(../img/bg.jpg);
+    background: snow url(../img/bg.jpg);
 }
 
-th {
-    text-align: left;
+.old_character{
+    color: #880000;
 }
 
-td {
-    text-align: left;
-    padding: 2px 2px;
+.new_character{
+    color:#008800;
 }
 
-.odd {
-    color: #003300;
+.item_left{
+    width: 200px;
+    text-align: right;
+    padding-right: 10px;
 }
 
-.even {
-    color: #330000;
+.item_right{
+    width: 400px;
+    padding-left: 10px;
 }
 
 .note {
-    width: 430px;
+    width: 590px;
     padding: 3px 5px;
     margin-top: 5px;
     background-image: url(../img/bg2.jpg);
     border-radius: 2px;
-    -moz-border-radius: 2px;
-    -webkit-border-radius: 2px;
     box-shadow: -1px -1px 1px #666 inset;
-    -moz-box-shadow: -1px -1px 1px #666 inset;
-    -webkit-box-shadow: -1px -1px 1px #666 inset;
 }
+

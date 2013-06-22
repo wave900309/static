@@ -1,0 +1,41 @@
+@CHARSET "UTF-8";
+/**
+ * Created with JetBrains WebStorm.
+ * User: Ken
+ * Date: 22/06/13
+ * Time: 18:18
+ * Copyright ©2013 Kenshin Yang.
+ */
+
+body{
+    background-image: url(../img/bgb.png);
+}
+
+p {
+    padding: 3px 5px;
+    border-radius: 2px;
+    box-shadow: -1px -1px 1px #666 inset;
+}
+
+.title {
+    width: 600px;
+    font-size: 16px;
+    font-weight: bold;
+    text-shadow: 2px 2px 2px #777;
+    text-align: center;
+    padding: 5px 5px;
+    margin-top: 10px;
+    margin-bottom: 1px;
+    background-image: url(../img/bg2.jpg);
+    border-radius: 2px;
+    box-shadow: -1px -1px 1px #666 inset;
+}
+
+.content {
+    text-indent: 2em;
+    width: 600px;
+    border-radius: 2px;
+    box-shadow: -1px -1px 1px #999 inset;
+    background-image: url(../img/bg.jpg);
+    margin-top: 1px;
+}

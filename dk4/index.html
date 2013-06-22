@@ -1,47 +1,39 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>人物</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>主角</title>
+<link href="./style/character.css" type="text/css" rel="stylesheet"/>
+<link rel="stylesheet" type="text/css" href="style/index.css"/>
+<script type="text/javascript" src="script/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="script/jquery.nicescroll.min.js"></script>
+<script type="text/javascript" src="script/index.js"></script>
 </head>
-<!--<embed autostart="true" loop="-1" controls="ControlPanel" width="0" height="0" src="bg.mid">-->
-<body background="img/bg.gif">
-
-<table width="500" border="0" align="center">
-    <tr>
-        <td colspan="5"><img src="img/title.png" width="640" height="80"/></td>
-    </tr>
-    <tr>
-        <td width="634" colspan="5"><img src="img/DK4P.png" width="640" height="480" border="0" usemap="#Map"/>
-            <map name="Map" id="Map">
-                <area shape="rect" coords="125,79,241,225" href="zuobo.html" title="我的名字叫杏太郎。我一定要為族人報仇......!"/>
-                <area shape="rect" coords="261,79,377,226" href="wuding.html" title="我叫伍丁。在阿拉伯經營商會，"/>
-                <area shape="rect" coords="398,79,513,225" href="diya.html" title="我是蒂雅。我一定要獨立。"/>
-                <area shape="rect" coords="55,271,169,418" href="lafeier.html" title="我是拉斐爾。是初次出海。"/>
-                <area shape="rect" coords="191,271,305,417" href="lilu.html" title="我是麗璐。全世界都是我的交易伙伴！"/>
-                <area shape="rect" coords="335,271,449,417" href="hedelamu.html" title="我是赫德拉姆。正努力建成世界最強的艦隊。"/>
-                <area shape="rect" coords="471,271,585,417" href="huamei.html" title="我是華梅。我不允許倭寇橫行霸道。"/>
-            </map>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <div align="center"><strong><a href="product.html">产品</a></strong></div>
-        </td>
-        <td>
-            <div align="center"><strong><a href="thing.html">物品</a></strong></div>
-        </td>
-        <td>
-            <div align="center"><strong><a href="treasure.html">宝物</a></strong></div>
-        </td>
-        <td>
-            <div align="center"><strong><a href="remain.html">遗迹</a></strong></div>
-        </td>
-        <td>
-            <div align="center"><strong><a href="drama.html">剧情</a></strong></div>
-        </td>
-    </tr>
-</table>
-
+<body>
+<header>
+    <div class="link" onselectstart="return false;">
+        <span class="link_sub" id="character">主角</span> <span class="link_sub" id="product">商品</span>
+        <span class="link_sub" id="treasure">宝物</span> <span class="link_sub" id="remain">遗迹</span>
+        <span class="link_sub" id="story">剧情</span>
+    </div>
+</header>
+<div id="frame">
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/> <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/> <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+</div>
+<div class="navi" onselectstart="return false;">
+    <div class="navi_sub" id="diya">蒂雅</div>
+    <div class="navi_sub" id="hedelamu">赫德拉姆</div>
+    <div class="navi_sub" id="huamei">华梅</div>
+    <div class="navi_sub" id="lafeier">拉斐尔</div>
+    <div class="navi_sub" id="lilu">丽璐</div>
+    <div class="navi_sub" id="wuding">伍丁</div>
+    <div class="navi_sub" id="zuobo">佐伯</div>
+</div>
+<footer>©2011-2013 Kenshin Yang&nbsp;</footer>
 </body>
 </html>
+
+
+

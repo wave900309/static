@@ -1,0 +1,110 @@
+@CHARSET "UTF-8";
+/**
+ * Created with JetBrains WebStorm.
+ * User: Ken
+ * Date: 22/06/13
+ * Time: 19:02
+ * Copyright ©2013 Kenshin Yang.
+ */
+
+body {
+    font-size: 14px;
+    background-image: url(../img/bgb.png);
+    font-family: monospace, 'Courier New', sans-serif;
+}
+
+header {
+    background: none repeat scroll 0 0 #F1F1F1;
+    border-bottom: 1px solid #D2D2D2;
+    box-shadow: 0 0 10px #666666;
+    height: 26px;
+    width: 100%;
+    left: 0;
+    top: 0;
+    padding-left: 600px;
+    padding-top: 6px;
+    text-align: left;
+    opacity: 0.98;
+    overflow: hidden;
+    position: fixed;
+    z-index: 1;
+}
+
+.link {
+    width: 300px;
+    -moz-user-focus: ignore;
+    -moz-user-input: disabled;
+    -moz-user-select: none;
+}
+
+.link_sub {
+    text-shadow: 2px 2px 2px #bbb;
+    padding: 4px;
+    margin-left: 10px;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.link_sub:hover {
+    background: lightgray;
+    border-radius: 2px;
+}
+
+#frame {
+    width: 820px;
+    margin-left: 10px;
+    margin-top: 30px;
+    padding-left: 10px;
+    overflow: auto;
+}
+
+.navi {
+    position: fixed;
+    top: 40px;
+    left: 880px;
+    -moz-user-focus: ignore;
+    -moz-user-input: disabled;
+    -moz-user-select: none;
+}
+
+.navi a {
+    color: black;
+    text-decoration: none;
+}
+
+.navi a:visited {
+    color: black;
+}
+
+.navi_sub {
+    position: relative;
+    margin-bottom: 3px;
+    left: 0;
+    width: 70px;
+    height: 20px;
+    font-size: 16px;
+    text-align: left;
+    text-shadow: 2px 2px 2px #bbb;
+    background-image: url(../img/bg.jpg);
+    padding: 4px;
+    cursor: pointer;
+    border-radius: 4px;
+    box-shadow: -1px -1px 1px #666 inset;
+}
+
+footer {
+    font-family: Consolas,monospace;
+    background: none repeat scroll 0 0 #F1F1F1;
+    border-top: 1px solid #D2D2D2;
+    box-shadow: 0 0 10px #666666;
+    height: 20px;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    opacity: 0.98;
+    overflow: hidden;
+    position: fixed;
+    z-index: 1;
+    text-align: right;
+    padding-right: 10px;
+}
