@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title>test</title>
+<script type="text/javascript" src="script/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="script/jquery.xdomainajax.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('div').mouseup(function () {
+            var word = getSelectedText();
+            if(word.length == 1){
+                dict(word);
+            }
+
+            if(word.length > 1){
+                dicts(word)
+            }
+        });
+    });
+
+    /*查询单个字*/
+    function dict(word) {
+        var key = encodeURIComponent(word);
+        $.ajax({
+            url: 'http://www.zdic.net/search/?c=3&q=' + key,
+            type: 'GET',
+            success: function (res) {
+                var content = res.responseText;
+                var body;
+                if (content.contains('汉英互译')) {
+                    body = content.substring(content.indexOf('● <') + 2, content.indexOf('汉英互译'));
+                } else {
+                    body = content.substring(content.indexOf('● <') + 2, content.indexOf('English<'));
+                }
+                var css = '<style type="text/css">' + content.substring(content.indexOf('\<!--') + 4, content.indexOf('--\>')) + '</style>';
+                var result = '<html><head>' + css + '</head>' + body + '</html>';
+                $('.out').html(result);
+            }
+        });
+    }
+
+    /*查询词语*/
+    function dicts(word) {
+        var key = encodeURIComponent(word);
+        $.ajax({
+            url: 'http://www.zdic.net/search/?c=3&q=' + key,
+            type: 'GET',
+            success: function (res) {
+                var content = res.responseText;
+                var body = content.substring(content.indexOf('<div class="cdnr">'), content.indexOf('<div class="footer">'));
+                var css = '<style type="text/css">' + content.substring(content.indexOf('&lt;!--') + 7, content.indexOf('--&gt;')) + '</style>';
+                var result = '<html><head>' + css + '</head>' + body + '</html>';
+                $('.out').html(result);
+            }
+        });
+    }
+
+    function getSelectedText() {
+        if (window.getSelection) {
+            return window.getSelection().toString();
+        } else if (document.selection) {
+            return document.selection.createRange().text;
+        }
+        return '';
+    }
+</script>
+<style type="text/css">
+   body {
+        font-size: 12px;
+        font-family: consolas, sans-serif;
+    }
+
+    h1{
+        font-size: 16px;
+    }
+
+    h2{
+        font-size: 14px;
+    }
+
+</style>
+</head>
+<body>
+<div class="qinglian" style="background: #ddffdd">
+    <pre> 第二十一回　曹操煮酒论英雄　关公赚城斩车冑
+
+天子血诏从许田起见，诸臣定盟亦从许田起见。马腾之知玄德，以云长而知之；马腾之知云长，以许田而知之。想见许田当日，曹操之横，气焰逼人；云长之怒，须眉皆动。文有叙事在后幅，而适为前篇加倍衬染者，此类是也。
+
+两雄不并立。不并立，则必相图。操以备为英雄，是操将图备矣，又逆知备之必将图我矣。备方与董承等同谋，而忽闻此言，安得不失惊落箸耶？是因落箸而假托闻雷，非因闻雷而故作落箸也。若因闻雷而故作落箸，以之欺小儿则可，岂所以欺曹操者？俗本多讹，故依原本校正之。
+
+“一震之威，乃至于此。”只淡淡一语，轻轻混过，妙在有意无意之间，岂真学小儿掩耳缩颈之态耶？古史所载，后人多有误解之者。即如项羽困于垓下，闻汉兵四面皆楚歌，大惊曰：“汉已尽得楚乎？何楚人之多也！”是张良、韩信欲使羽疑彭城已失，乱其军心耳。今人看<千金记>，误以楚歌为思家之曲，劝楚人还乡。夫楚人有家，汉人亦有家；将解散客兵，而先解散我兵，为之奈何？不知作传奇者，不过分外妆点以图悦目，而乃错认其事，讹以传讹，宁不为识者所笑！ 此时孙策在江东，曹操更不以英雄许之。直待后来孙权承袭，乃始叹曰：“生子当如孙仲谋。”然则此老眼力，大是不谬。当青梅煮酒之日，英雄只有两人，鼎足尚缺其一也。 自车冑为云长所杀，而曹操之兵端起矣。玄德之不欲杀冑者，以此时衣带诏未泄，董承谋未露，尚欲与操羁縻勿绝，阳和而阴图之耳。英雄作事，须要审势量力，性急不得。玄德深心人，故有此等算计。云长直心人，别无此等肚肠。两人同是豪杰，却各自一样性格，云长之不及玄德者在此，玄德之不及云长者亦在此。 此回叙刘、曹相攻之始，而中间夹写公孙瓒并袁术二段文字。瓒之事只在满宠口中虚写，术之事却用一半虚写、一半实写。不独瓒、术两人于此回中收场，而玉玺下落，亦于此回中结局。前者汉帝失玉玺，今者玉玺归汉帝，相去十数回，遥遥相对；而又预伏七十回后曹丕受玺篡汉之由。有应有伏，一笔不漏，一笔不繁。每见近人纪事，叙却一头，拋却一头，失枝脱节，病在遗忘；未说这边，又说那边，手忙脚乱，病在冗杂。今试读
+            <三国演义>，其亦可以阁笔矣。 董承义状上大书左将军刘备，备之继正统而无愧者此也。只“左将军刘备”五字，消得“汉昭烈皇帝”五字。昔汉高祖讨项羽召曰：“愿从诸侯王击楚之杀义帝者。”于是名正言顺，海内归心。今玄德既奉衣带诏以讨贼，则仗义执言；武侯之六出祁山、姜维之九伐中原，皆自此诏始矣。然备于斩车冑之后，何不便将此诏布告天下乎？曰：诏词本以赐董承者也。董承在内，若遽暴之，恐害董承故也。待承死，而后此诏乃昭然共被于海内耳。
+    </pre>
+</div>
+<div class="out"></div>
+</body>
+</html>
