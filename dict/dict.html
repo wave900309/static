@@ -4,112 +4,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <title>test</title>
-<style type="text/css">
-    body {
-        background: #f1f1f1;
-        font-size: 14px;
-        font-family: consolas, sans-serif;
-    }
-
-    h1 {
-        font-size: 16px;
-    }
-
-    h2 {
-        font-size: 14px;
-    }
-
-    #content {
-        font-size: 12px;
-        padding: 5px;
-        width: 300px;
-        height: 200px;
-        position: absolute;
-        overflow: auto;
-        display: none;
-        background: #ffffff;
-        border: 3px solid #cccccc;
-        border-top-width: 24px;
-        box-shadow: 2px 2px 2px #333333;
-    }
-</style>
+<link type="text/css" rel="stylesheet" href="style/dict.css"/>
 <script type="text/javascript" src="script/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="script/jquery.xdomainajax.js"></script>
 <script type="text/javascript" src="script/jquery.nicescroll.min.js"></script>
-<script type="text/javascript">
-    $(function () {
-        $('html').mouseup(function (e) {
-            var word = getSelectedText().trim();
-            if (word.length > 0) {
-                $('body').append('<div id="search" style="opacity:0.2;position: absolute;display: none"><img id="search_img" src="img/arrow_left.gif" alt="s"></div>')
-                        .append('<div id="content"></div>');
-                $('#search').css('left', e.pageX + 5).css('top', e.pageY - 8).fadeTo(200, 1.0);
-                $('#search_img').mouseover(function () {
-                    $('#content').fadeTo(100, 1.0).css({'left': e.pageX + 16, 'top': e.pageY - 8}).niceScroll({cursorborderradius: '0px',cursorwidth:"3px", cursorborder: '1px solid #cccccc', cursorcolor: '#cccccc'});
-                    if (word.length == 1) {
-                        dict(word);
-                        word = "";
-                    }
-                    if (word.length > 1) {
-                        dicts(word);
-                        word = "";
-                    }
-                });
-            } else {
-                $('#search').fadeOut(200, function () {
-                    $(this).remove();
-                });
-                $('#content').remove();
-            }
-        });
-    });
-
-    /*查询单个字*/
-    function dict(word) {
-        var key = encodeURIComponent(word);
-        $.ajax({
-            url: 'http://www.zdic.net/search/?c=3&q=' + key,
-            type: 'GET',
-            success: function (res) {
-                var content = res.responseText;
-                var body;
-                if (content.indexOf('汉英互译') >= 0) {
-                    body = content.substring(content.indexOf('● <'), content.indexOf('汉英互译'));
-                } else {
-                    body = content.substring(content.indexOf('● <'), content.indexOf('English<'));
-                }
-                var css = '<style type="text/css">' + content.substring(content.indexOf('\<!--') + 4, content.indexOf('--\>')) + '</style>';
-                var result = '<html><head>' + css + '</head>' + body + '</html>';
-                $('#content').html(result);
-            }
-        });
-    }
-
-    /*查询词语*/
-    function dicts(word) {
-        var key = encodeURIComponent(word);
-        $.ajax({
-            url: 'http://www.zdic.net/search/?c=3&q=' + key,
-            type: 'GET',
-            success: function (res) {
-                var content = res.responseText;
-                var body = content.substring(content.indexOf('<div class="cdnr">'), content.indexOf('<div class="footer">'));
-                var css = '<style type="text/css">' + content.substring(content.indexOf('&lt;!--') + 7, content.indexOf('--&gt;')) + '</style>';
-                var result = '<html><head>' + css + '</head>' + body + '</html>';
-                $('#content').html(result);
-            }
-        });
-    }
-
-    function getSelectedText() {
-        if (window.getSelection) {
-            return window.getSelection().toString();
-        } else if (document.selection) {
-            return document.selection.createRange().text;
-        }
-        return '';
-    }
-</script>
+<script type="text/javascript" src="script/zdic.js"></script>
 </head>
 <body>
 <div class="qinglian" style="width: 500px;">
