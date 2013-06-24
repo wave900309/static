@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title>test</title>
+<style type="text/css">
+    body {
+        background: #f1f1f1;
+        font-size: 14px;
+        font-family: consolas, sans-serif;
+    }
+
+    h1 {
+        font-size: 16px;
+    }
+
+    h2 {
+        font-size: 14px;
+    }
+
+    #content {
+        font-size: 12px;
+        padding: 5px;
+        width: 300px;
+        height: 200px;
+        position: absolute;
+        overflow: auto;
+        display: none;
+        background: #ffffff;
+        border: 3px solid #cccccc;
+        border-top-width: 24px;
+        box-shadow: 2px 2px 2px #333333;
+    }
+</style>
+<script type="text/javascript" src="script/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="script/jquery.xdomainajax.js"></script>
+<script type="text/javascript" src="script/jquery.nicescroll.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('html').mouseup(function (e) {
+            var word = getSelectedText().trim();
+            if (word.length > 0) {
+                $('body').append('<div id="search" style="opacity:0.2;position: absolute;display: none"><img id="search_img" src="img/arrow_left.gif" alt="s"></div>')
+                        .append('<div id="content"></div>');
+                $('#search').css('left', e.pageX + 5).css('top', e.pageY - 8).fadeTo(200, 1.0);
+                $('#search_img').mouseover(function () {
+                    $('#content').fadeTo(100, 1.0).css({'left': e.pageX + 16, 'top': e.pageY - 8}).niceScroll({cursorborderradius: '0px',cursorwidth:"3px", cursorborder: '1px solid #cccccc', cursorcolor: '#cccccc'});
+                    if (word.length == 1) {
+                        dict(word);
+                        word = "";
+                    }
+                    if (word.length > 1) {
+                        dicts(word);
+                        word = "";
+                    }
+                });
+            } else {
+                $('#search').fadeOut(200, function () {
+                    $(this).remove();
+                });
+                $('#content').remove();
+            }
+        });
+    });
+
+    /*查询单个字*/
+    function dict(word) {
+        var key = encodeURIComponent(word);
+        $.ajax({
+            url: 'http://www.zdic.net/search/?c=3&q=' + key,
+            type: 'GET',
+            success: function (res) {
+                var content = res.responseText;
+                var body;
+                if (content.indexOf('汉英互译') >= 0) {
+                    body = content.substring(content.indexOf('● <'), content.indexOf('汉英互译'));
+                } else {
+                    body = content.substring(content.indexOf('● <'), content.indexOf('English<'));
+                }
+                var css = '<style type="text/css">' + content.substring(content.indexOf('\<!--') + 4, content.indexOf('--\>')) + '</style>';
+                var result = '<html><head>' + css + '</head>' + body + '</html>';
+                $('#content').html(result);
+            }
+        });
+    }
+
+    /*查询词语*/
+    function dicts(word) {
+        var key = encodeURIComponent(word);
+        $.ajax({
+            url: 'http://www.zdic.net/search/?c=3&q=' + key,
+            type: 'GET',
+            success: function (res) {
+                var content = res.responseText;
+                var body = content.substring(content.indexOf('<div class="cdnr">'), content.indexOf('<div class="footer">'));
+                var css = '<style type="text/css">' + content.substring(content.indexOf('&lt;!--') + 7, content.indexOf('--&gt;')) + '</style>';
+                var result = '<html><head>' + css + '</head>' + body + '</html>';
+                $('#content').html(result);
+            }
+        });
+    }
+
+    function getSelectedText() {
+        if (window.getSelection) {
+            return window.getSelection().toString();
+        } else if (document.selection) {
+            return document.selection.createRange().text;
+        }
+        return '';
+    }
+</script>
+</head>
+<body>
+<div class="qinglian" style="width: 500px;">
+    汤（？—前1588年）商朝的创建者（约前1617年—前1588年在位）儒家推崇的上古圣王之一，在位30年，其中17年为部落首领，13年为商朝君主。 子姓，名履，今人多称商汤，又称武汤、天乙、成汤、成唐，甲骨文称啺（音“唐”，为甲骨文的“唐”字）、大乙、太乙，又称高祖乙，原商族部落首领， 与有莘氏通婚后，任贤臣伊尹和仲虺为左右相，以亳为前进据点，积极治国，准备灭夏朝。 当时夏朝，帝桀在位，夏朝国势渐衰，矛盾异常尖锐，汤乘机起兵，首先攻灭葛（今河南宁陵北）及十多小国和部落。 接着又克韦（今河南滑县东南）、顾（今河南范县东南）、昆吾（今河南许昌东部）等小国。经过11次战役，使得夏王朝空前的孤立无援， 又利用有娀氏的反叛，起兵于鸣条之战打败夏桀王，一举灭夏。由于商汤以武力灭夏，打破君王永定的说法，从此中国历代王朝皆如此更迭， 因而史称“商汤革命”。汤建立商朝后，对内减轻征敛，鼓励生产，安抚民心，从而扩展了统治区域，影响远至黄河上游，氐、羌部落都来纳贡归服。
+</div>
+<div>
+</div>
+</body>
+</html>
