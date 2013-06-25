@@ -7,7 +7,7 @@
  * Copyright ©2013 Kenshin Yang.
  */
 
-#content h1 {
+#zdic_content h1 {
     text-align: left;
     color: #000;
     font-size: 28px;
@@ -17,20 +17,20 @@
     box-shadow: 1px 1px 1px #333;
 }
 
-#content h2 {
+#zdic_content h2 {
     text-align: left;
     color: #000;
     font-size: 15px;
 }
 
-#content {
+#zdic_content {
     color: #000;
     font-size: 13px;
     padding: 5px;
     width: 270px;
     height: 170px;
     position: absolute;
-    overflow: hidden;
+    overflow: auto;
     display: none;
     background: #fff;
     border: 3px solid #ccc;
@@ -39,20 +39,20 @@
     outline: none;
 }
 
-#content p {
+#zdic_content p {
     color: #000;
     font-size: 13px;
     margin: 1px;
     text-indent: 0;
 }
 
-#content strong {
+#zdic_content strong {
     color: #000;
     font-size: 13px;
     line-height: 27px;
 }
 
-#content .dichr {
+#zdic_content .dichr {
     color: #000;
     font-size: 13px;
     margin: 0;
