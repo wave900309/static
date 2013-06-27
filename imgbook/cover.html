@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>book</title>
+<style type="text/css">
+    body{
+        /*background-color: darkgray;*/
+    }
+
+    #page1 {
+        position: absolute;
+        z-index: -1;
+        box-shadow: 2px 2px 8px #444;
+    }
+
+    #page2 {
+        display: none;
+        position: absolute;
+        z-index: -1;
+        box-shadow: 2px 2px 8px #444;
+    }
+
+    #content_left {
+        position: absolute;
+        cursor: pointer;
+        z-index: 0;
+        opacity: 0;
+    }
+
+    #content_right {
+        position: absolute;
+        cursor: pointer;
+        z-index: 0;
+        opacity: 0;
+    }
+</style>
+<script type="text/javascript" src="script/jquery-1.10.1.min.js"></script>
+<script type="text/javascript" src="script/jquery-ui-1.10.3.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var x = 20;
+        var y = 10;
+        var width = 1000;
+        var height = 1500;
+        $('#content_left').css({'left': x, 'top': y, 'width': width / 2, 'height': height});
+        $('#content_right').css({'left': x + width / 2, 'top': y, 'width': width / 2, 'height': height});
+    });
+
+    $(function () {
+        var x = 20;
+        var y = 10;
+        var width = 1000;
+        var height = 1500;
+        var page1 = $('#page1');
+        var page2 = $('#page2');
+        $('#content_left').click(function () {
+            var num = parseInt(getCurNo());
+            num = processNum(num - 1);
+            if (num >= 0) {
+                if ($(page2).css('display') == 'none') {
+                    $(page2).css({'left': x, 'top': y, 'width': width, 'height': height});
+                    $(page1).hide('slide', {direction: 'right'}, 300);
+                    $(page2).show('slide', {direction: 'left'}, 300);
+                    $('.page_img2').attr('src', 'img/jzy/' + num + '.png');
+                } else {
+                    $(page1).css({'left': x, 'top': y, 'width': width, 'height': height});
+                    $(page2).hide('slide', {direction: 'right'}, 300);
+                    $(page1).show('slide', {direction: 'left'}, 300);
+                    $('.page_img1').attr('src', 'img/jzy/' + num + '.png');
+                }
+            }
+        });
+
+        $('#content_right').click(function () {
+            var num = parseInt(getCurNo());
+            num = processNum(num + 1);
+            if (num <= 313) {
+                if ($(page2).css('display') == 'none') {
+                    $(page2).css({'left': x, 'top': y, 'width': width, 'height': height});
+                    $(page1).hide('slide', {direction: 'left'}, 300);
+                    $(page2).show('slide', {direction: 'right'}, 300);
+                    $('.page_img2').attr('src', 'img/jzy/' + num + '.png');
+                } else {
+                    $(page1).css({'left': x, 'top': y, 'width': width, 'height': height});
+                    $(page2).hide('slide', {direction: 'left'}, 300);
+                    $(page1).show('slide', {direction: 'right'}, 300);
+                    $('.page_img1').attr('src', 'img/jzy/' + num + '.png');
+                }
+            }
+        });
+    });
+
+    function getCurNo() {
+        return $(page2).css('display') == 'none' ? $('.page_img1').attr('src').substring(8, 12) : $('.page_img2').attr('src').substring(8, 12);
+    }
+
+    function processNum(num) {
+        var number = num;
+        if (number >= 0 && number <= 9) {
+            number = '000' + number;
+        } else if (number >= 10 && number <= 99) {
+            number = '00' + number;
+        } else if (number >= 100 && number <= 999) {
+            number = '0' + number;
+        }
+        return number;
+    }
+</script>
+</head>
+<body>
+<div id="content_left"></div>
+<div id="content_right"></div>
+<div id=page1><img class="page_img1" src="img/jzy/0000.png" alt=""></div>
+<div id=page2><img class="page_img2" src="" alt=""></div>
+</body>
+</html>
